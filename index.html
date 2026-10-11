@@ -1,0 +1,266 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Physio Anatomy 3D</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1120;
+    color: #f1f5f9;
+}
+
+header {
+    padding: 24px 16px;
+    text-align: center;
+    background: #111c32;
+    border-bottom: 1px solid #26344d;
+}
+
+header h1 {
+    margin: 0;
+    color: #38bdf8;
+    font-size: 30px;
+}
+
+header p {
+    color: #cbd5e1;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 16px;
+    background: #15233b;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    width: 92%;
+    max-width: 1100px;
+    margin: 28px auto;
+}
+
+.hero {
+    padding: 28px;
+    text-align: center;
+    background: #14243b;
+    border-radius: 16px;
+}
+
+.hero h2 {
+    color: #7dd3fc;
+}
+
+input {
+    width: 100%;
+    max-width: 500px;
+    padding: 14px;
+    margin-top: 12px;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.viewer {
+    margin-top: 24px;
+    padding: 30px 15px;
+    min-height: 180px;
+    text-align: center;
+    border: 1px dashed #38bdf8;
+    border-radius: 14px;
+    background: #101b2e;
+}
+
+.viewer p {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.systems {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.card {
+    padding: 22px;
+    background: #17263e;
+    border: 1px solid #293c59;
+    border-radius: 12px;
+}
+
+.card h3 {
+    color: #7dd3fc;
+}
+
+.card p {
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: #94a3b8;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>PHYSIO ANATOMY 3D</h1>
+    <p>Explore the human body. Understand anatomy. Learn physiotherapy.</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#viewer">3D Atlas</a>
+    <a href="#systems">Body Systems</a>
+    <a href="#about">About</a>
+</nav>
+
+<main id="home">
+
+    <section class="hero">
+        <h2>Your Interactive Human Anatomy Classroom</h2>
+
+        <p>
+            Explore anatomical structures, study their functions,
+            and build your knowledge of the human body.
+        </p>
+
+        <input
+            type="search"
+            id="search"
+            placeholder="Search: femur, heart, brain, muscles..."
+            aria-label="Search anatomical systems"
+        >
+    </section>
+
+    <section class="viewer" id="viewer">
+        <h2>Interactive 3D Anatomy Atlas</h2>
+
+        <p>
+            Our 3D anatomy viewer will be integrated here.
+        </p>
+
+        <p>
+            The next stage will add a rotatable human body,
+            anatomical layers and selectable structures.
+        </p>
+    </section>
+
+    <section id="systems">
+        <h2>Explore Human Body Systems</h2>
+
+        <div class="systems">
+
+            <article class="card" data-search="skeleton bones joints">
+                <h3>Skeletal System</h3>
+                <p>Explore bones, joints and the framework of the body.</p>
+            </article>
+
+            <article class="card" data-search="muscles tendons movement">
+                <h3>Muscular System</h3>
+                <p>Study muscles, movement and muscular function.</p>
+            </article>
+
+            <article class="card" data-search="brain nerves nervous spinal cord">
+                <h3>Nervous System</h3>
+                <p>Learn about the brain, spinal cord and nerves.</p>
+            </article>
+
+            <article class="card" data-search="heart blood cardiovascular">
+                <h3>Cardiovascular System</h3>
+                <p>Understand the heart, circulation and blood vessels.</p>
+            </article>
+
+            <article class="card" data-search="lungs respiratory breathing">
+                <h3>Respiratory System</h3>
+                <p>Explore the lungs and the process of breathing.</p>
+            </article>
+
+            <article class="card" data-search="stomach intestine digestive">
+                <h3>Digestive System</h3>
+                <p>Learn about digestion and nutrient absorption.</p>
+            </article>
+
+            <article class="card" data-search="kidney urinary bladder">
+                <h3>Urinary System</h3>
+                <p>Study the kidneys, bladder and urinary tract.</p>
+            </article>
+
+            <article class="card" data-search="endocrine glands hormones">
+                <h3>Endocrine System</h3>
+                <p>Discover hormone-producing glands and their functions.</p>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About This Project</h2>
+
+        <p>
+            Physio Anatomy 3D is an educational project designed
+            to support human anatomy learning for physiotherapy students.
+        </p>
+
+        <p>
+            It is intended for education and is not a substitute
+            for professional medical advice.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    Physio Anatomy 3D | Educational Anatomy Project
+</footer>
+
+<script>
+var search = document.getElementById("search");
+var cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function () {
+    var query = search.value.toLowerCase().trim();
+
+    cards.forEach(function (card) {
+        var content = (
+            card.innerText + " " +
+            card.getAttribute("data-search")
+        ).toLowerCase();
+
+        card.classList.toggle(
+            "hidden",
+            content.indexOf(query) === -1
+        );
+    });
+});
+</script>
+
+</body>
+</html>
+```
